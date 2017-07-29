@@ -3,12 +3,16 @@
 		<h1>Vigenere encryption</h1>
 		
 		<b-form>
-			<label for="plaintext">Plaintext</label>
-			<b-form-input textarea v-model="plaintext" :rows="7"></b-form-input>
-			<label for="key" class="mt-1">Key</label>
-			<b-form-input type="text" v-model="key"></b-form-input>
-			<label for="ciphertext" class="mt-1">Ciphertext</label>
-			<b-form-input textarea :rows="7" v-model="ciphertext"></b-form-input>
+			<b-form-fieldset label="Plaintext" description="Only ASCII latin alphabet please"
+					:state="isNoAscii">
+				<b-form-input textarea v-model="plaintext" :rows="7"></b-form-input>
+			</b-form-fieldset>
+			<b-form-fieldset label="Key">
+				<b-form-input type="text" v-model="key"></b-form-input>
+			</b-form-fieldset>
+			<b-form-fieldset label="Ciphertext">
+				<b-form-input textarea :rows="7" v-model="ciphertext"></b-form-input>
+			</b-form-fieldset>
 		</b-form>
 	</div>
 </template>
@@ -23,7 +27,7 @@ function isSpecial (x) {
 function addToLetter (x, y, base) {
 	console.log(`now at ${x}, codepoint ${x.codePointAt(0)}`)
 	let n = x.codePointAt(0) - base.codePointAt(0)
-	let r = (n + y) % 26
+	let r = (n + y + 1) % 26
 	return String.fromCodePoint(base.codePointAt(0) + r)
 }
 
@@ -66,6 +70,12 @@ export default {
 			if (this.plaintext && this.key) {
 				return vigenere(this.plaintext, this.key)
 			}
+		},
+		isNoAscii () {
+			for (let i = 0; i < this.plaintext.length; i++) {
+				if (this.plaintext.codePointAt(i) > 127) return "danger"
+			}
+			return ""
 		},
 	},
 }

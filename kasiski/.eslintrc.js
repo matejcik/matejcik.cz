@@ -27,5 +27,6 @@ module.exports = {
     'no-tabs': 0,
     'indent': ['error', 'tab'],
     'quotes': 0,
+    'no-unused-vars': ['error', { varsIgnorePattern: "^_" }],
   }
 }
