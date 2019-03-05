@@ -1,0 +1,12 @@
+.container
+    h1 Vigenere encryption
+
+    accordion(label="Plaintext")
+        textarea($model="plaintext")
+            | put text here
+
+    accordion(label="Key")
+        input($model="key", type="text", placeholder="put key here")
+
+    accordion(label="Ciphertext")
+        p= ciphertext

@@ -25,16 +25,14 @@ module.exports = {
       '@': resolve('src')
     }
   },
+  resolveLoader: {
+    modules: ["node_modules", resolve("loaders")]
+  },
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
+        test: /\.pug$/,
+        loader: 'pug-vueify',
       },
       {
         test: /\.vue$/,

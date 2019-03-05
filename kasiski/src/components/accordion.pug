@@ -1,0 +1,11 @@
+.card(id=cardId)
+    .card-header(@click=toggleThis)
+        .label= label
+        if collapsible
+            .arrow ▶
+    .card-body
+        if !isCollapsed
+            slot
+                p This card is empty
+        else
+            p Collapsed
