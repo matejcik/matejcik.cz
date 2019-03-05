@@ -2,6 +2,8 @@ import Vue from 'vue'
 import vuePug, { pugTemplate } from "./vue-pug"
 import appTmpl from "./components/vigenere.pug"
 
+import _ from "./assets/style.css"
+
 vuePug("accordion")
 
 function isSpecial (x) {

@@ -1,4 +1,4 @@
-.container
+#app
     h1 Vigenere encryption
 
     accordion(label="Plaintext")
@@ -10,3 +10,8 @@
 
     accordion(label="Ciphertext")
         p= ciphertext
+
+    .ta(contenteditable=true)
+        | hello
+        b world
+        | how are you

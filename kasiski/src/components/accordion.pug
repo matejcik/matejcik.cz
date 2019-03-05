@@ -2,10 +2,8 @@
     .card-header(@click=toggleThis)
         .label= label
         if collapsible
-            .arrow ▶
-    .card-body
-        if !isCollapsed
+            .arrow(class={open: !isCollapsed}) ▶
+    if !isCollapsed
+        .card-body
             slot
                 p This card is empty
-        else
-            p Collapsed
